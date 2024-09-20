@@ -44,9 +44,10 @@ export const Login: FC = () => {
         const userType = userInfoResult?.data?.view?.type;
         const storeId = userInfoResult?.data?.view?.accesses[0]?.store_id;
 
-        dispatch(setIsAuthenticated(true));
-
-        handleRedirection(userType, storeId);
+        if (userType) {
+          dispatch(setIsAuthenticated(true));
+          handleRedirection(userType, storeId);
+        }
       } catch (err) {
         dispatch(setIsAuthenticated(false));
         console.error(err);
@@ -112,7 +113,7 @@ export const Login: FC = () => {
     }
   };
 
-  const handleFormSubmit = async () => {
+  const handleFormSubmit = () => {
     handleLogin();
   };
 
@@ -188,6 +189,7 @@ export const Login: FC = () => {
                   Log in
                 </Button>
               </Form>
+              {/* If this takes you to another page, it must be an anchor, not a button */}
               <Button
                 className="font-bold mt-2 p-5 text-lg hover:!border-[#288364] hover:!text-[#288364]"
                 block
