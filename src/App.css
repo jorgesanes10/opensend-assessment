@@ -55,6 +55,8 @@ body.dark .ant-input-outlined input {
   color: #eaeaea;
 }
 
-body.dark .ant-input-outlined input::placeholder {
-  color: #aaa;
+body.dark .ant-input-outlined input::placeholder,
+body.dark .anticon-eye-invisible,
+body.dark .anticon-eye {
+  color: #aaa !important;
 }
