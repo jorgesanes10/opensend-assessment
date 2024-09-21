@@ -179,7 +179,7 @@ export const Login: FC = () => {
                 {/* I placed the error here to give a visual differentiation between errors caused by the user directly and errors that come from the backend */}
                 {isError && (
                   <p
-                    className="text-red-500 mb-4"
+                    className="text-red-500 mb-4 font-sans"
                     data-testid="login-error-message"
                   >
                     {
