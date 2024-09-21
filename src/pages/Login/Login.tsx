@@ -1,18 +1,18 @@
 import { FC, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { FetchBaseQueryError } from '@reduxjs/toolkit/query';
+import { Card, Row, Col, Form, Input, Button, Spin } from 'antd';
+import { LockTwoTone, MailTwoTone } from '@ant-design/icons';
 import {
   useLazyGetStoreInfoQuery,
   useLazyGetUserInfoQuery,
   useLoginMutation,
-} from '../features/apiSlice';
-import { LockTwoTone, MailTwoTone } from '@ant-design/icons';
-import { Card, Row, Col, Form, Input, Button, Spin } from 'antd';
-import { Logo } from '../components/Logo';
+} from '@/redux/slices/apiSlice';
+import { setIsAuthenticated } from '@/redux/slices/userSlice';
+import { Logo } from '@/components/Logo';
 
 import './Login.css';
-import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { setIsAuthenticated } from '../features/userSlice';
-import { FetchBaseQueryError } from '@reduxjs/toolkit/query';
 
 type FormData = {
   username: string;
@@ -31,30 +31,16 @@ export const Login: FC = () => {
     useLazyGetUserInfoQuery();
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const values = Form.useWatch([], form);
 
-  const navigate = useNavigate();
-
   useEffect(() => {
-    async function fetchUser() {
-      try {
-        const userInfoResult = await fetchUserInfo();
+    const tokens = JSON.parse(localStorage.getItem('OpenSend_tokens')!);
 
-        const userType = userInfoResult?.data?.view?.type;
-        const storeId = userInfoResult?.data?.view?.accesses[0]?.store_id;
-
-        if (userType) {
-          dispatch(setIsAuthenticated(true));
-          handleRedirection(userType, storeId);
-        }
-      } catch (err) {
-        dispatch(setIsAuthenticated(false));
-        console.error(err);
-      }
+    if (tokens?.accessToken) {
+      fetchUser();
     }
-
-    fetchUser();
   }, []);
 
   useEffect(() => {
@@ -63,6 +49,25 @@ export const Login: FC = () => {
       .then(() => setIsFormValid(true))
       .catch(() => setIsFormValid(false));
   }, [form, values]);
+
+  // fetching logic
+
+  async function fetchUser() {
+    try {
+      const userInfoResult = await fetchUserInfo();
+
+      const userType = userInfoResult?.data?.view?.type;
+      const storeId = userInfoResult?.data?.view?.accesses[0]?.store_id;
+
+      if (userType) {
+        dispatch(setIsAuthenticated(true));
+        handleRedirection(userType, storeId);
+      }
+    } catch (err) {
+      dispatch(setIsAuthenticated(false));
+      console.error(err);
+    }
+  }
 
   const handleLogin = async () => {
     const { username, password } = values;
@@ -112,6 +117,8 @@ export const Login: FC = () => {
       console.error(err);
     }
   };
+
+  // handlers
 
   const handleFormSubmit = () => {
     handleLogin();

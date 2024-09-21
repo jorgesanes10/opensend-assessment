@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { RootState } from '../app/store';
+import { RootState } from '@/redux/store';
 
 export const Logo = () => {
   const [fill, setFill] = useState('#1c1c1c');

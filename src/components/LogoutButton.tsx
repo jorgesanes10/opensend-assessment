@@ -1,7 +1,7 @@
-import { Button } from 'antd';
-import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { setIsAuthenticated } from '../features/userSlice';
+import { useDispatch } from 'react-redux';
+import { Button } from 'antd';
+import { setIsAuthenticated } from '@/redux/slices/userSlice';
 
 export const LogoutButton = () => {
   const navigate = useNavigate();

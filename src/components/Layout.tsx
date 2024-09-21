@@ -1,9 +1,9 @@
 import { FC, ReactNode, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { toggleTheme } from '../features/themeSlice';
 import { Button } from 'antd';
 import { MoonOutlined, SunOutlined } from '@ant-design/icons';
-import { RootState } from '../app/store';
+import { RootState } from '@/redux/store';
+import { toggleTheme } from '@/redux/slices/themeSlice';
 
 type LayoutProps = {
   children: ReactNode;

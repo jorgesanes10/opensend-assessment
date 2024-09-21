@@ -48,3 +48,5 @@ export const {
   useLazyGetStoreInfoQuery,
   useLazyGetUserInfoQuery,
 } = apiSlice;
+
+export default apiSlice.reducer;

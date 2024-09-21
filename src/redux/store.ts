@@ -1,13 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { themeSlice } from '../features/themeSlice';
-import { apiSlice } from '../features/apiSlice';
-import { userSlice } from '../features/userSlice';
+import themeReducer from './slices/themeSlice';
+import apiReducer, { apiSlice } from './slices/apiSlice';
+import userReducer from './slices/userSlice';
 
 export const store = configureStore({
   reducer: {
-    theme: themeSlice.reducer,
-    api: apiSlice.reducer,
-    user: userSlice.reducer,
+    theme: themeReducer,
+    api: apiReducer,
+    user: userReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(apiSlice.middleware),

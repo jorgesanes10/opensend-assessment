@@ -4,13 +4,13 @@ import {
   createRoutesFromElements,
   RouterProvider,
 } from 'react-router-dom';
-import { Layout } from './components/Layout';
-import { Login } from './pages/Login';
-import './App.css';
-import { Admin } from './pages/Admin';
-import { Dashboard } from './pages/Dashboard';
-import { Onboarding } from './pages/Onboarding';
-import { ProtectedRoute } from './components/ProtectedRoute';
+import { Layout } from '@/components/Layout';
+import { Login } from '@/pages/Login';
+import { Admin } from '@/pages/Admin';
+import { Dashboard } from '@/pages/Dashboard';
+import { Onboarding } from '@/pages/Onboarding';
+import { ProtectedRoute } from '@/components/ProtectedRoute';
+import '@/App.css';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
