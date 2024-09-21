@@ -3,6 +3,11 @@
 1. Run `npm install`
 2. Run `npm run dev`
 
+## Previewing the build
+
+1. Run `npm run build`
+2. Run `npm run preview`
+
 # About the project
 
 This is a React project built using Vite with TypeScript, RTK Toolkit, Ant Design, and TailwindCSS.
@@ -34,3 +39,17 @@ Alternatively, you can open Cypress to actually see the tests running in the Chr
 4. Choose your browser and click on the Start E2E Testing button
 5. Click on the spec.cy.ts file
 6. See the tests running
+
+## Path alias
+
+A path alias was added to `src` facilitate the importing of components and files. Instead of importing files like so:
+
+```
+import Component from '../../components/Component';
+```
+
+You can use this:
+
+```
+import Component from '@/components/Component';
+```
