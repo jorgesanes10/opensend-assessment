@@ -161,7 +161,7 @@ export const Login: FC = () => {
                 >
                   <Input
                     type="email"
-                    placeholder="Username"
+                    placeholder="Email"
                     prefix={<MailTwoTone twoToneColor="#999" />}
                   />
                 </Form.Item>
@@ -172,7 +172,7 @@ export const Login: FC = () => {
                   ]}
                 >
                   <Input.Password
-                    placeholder="********"
+                    placeholder="Password"
                     prefix={<LockTwoTone twoToneColor="#999" />}
                   />
                 </Form.Item>
@@ -187,7 +187,7 @@ export const Login: FC = () => {
                 )}
                 <Button
                   htmlType="submit"
-                  className="text-lg p-5 font-bold !shadow-none bg-[#288364] hover:!bg-[#206b53] disabled:opacity-60 disabled:bg-[#288364] disabled:text-[#fff]"
+                  className="rounded text-lg p-5 font-bold !shadow-none bg-[#288364] hover:!bg-[#206b53] disabled:opacity-60 disabled:bg-[#288364] disabled:text-[#fff]"
                   type="primary"
                   block
                   disabled={!isFormValid}
@@ -198,7 +198,7 @@ export const Login: FC = () => {
               </Form>
               {/* If this takes you to another page, it must be an anchor, not a button */}
               <Button
-                className="font-bold mt-2 p-5 text-lg hover:!border-[#288364] hover:!text-[#288364]"
+                className="rounded font-bold mt-2 p-5 text-lg hover:!border-[#288364] hover:!text-[#288364]"
                 block
               >
                 Forgot your password?
