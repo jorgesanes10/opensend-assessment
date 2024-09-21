@@ -1,9 +1,10 @@
+import { FC } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { Button } from 'antd';
 import { setIsAuthenticated } from '@/redux/slices/userSlice';
 
-export const LogoutButton = () => {
+export const LogoutButton: FC = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 

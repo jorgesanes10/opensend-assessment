@@ -60,3 +60,15 @@ body.dark .anticon-eye-invisible,
 body.dark .anticon-eye {
   color: #aaa !important;
 }
+
+/* Responsive design */
+
+@media (max-width: 390px) {
+  #root {
+    padding: 0;
+  }
+
+  .ant-card {
+    border-radius: 0;
+  }
+}

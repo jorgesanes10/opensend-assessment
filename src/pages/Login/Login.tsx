@@ -22,13 +22,13 @@ type FormData = {
 export const Login: FC = () => {
   const [isFormValid, setIsFormValid] = useState(false);
 
-  const [form] = Form.useForm<FormData>();
-
   const [login, { isLoading, isError, error }] = useLoginMutation();
   const [fetchStoreInfo, { isLoading: isLoadingStoreInfo }] =
     useLazyGetStoreInfoQuery();
   const [fetchUserInfo, { isLoading: isLoadingUserInfo, data: userInfoData }] =
     useLazyGetUserInfoQuery();
+
+  const [form] = Form.useForm<FormData>();
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -176,6 +176,7 @@ export const Login: FC = () => {
                     prefix={<LockTwoTone twoToneColor="#999" />}
                   />
                 </Form.Item>
+                {/* I placed the error here to give a visual differentiation between errors caused by the user directly and errors that come from the backend */}
                 {isError && (
                   <p
                     className="text-red-500 mb-4"

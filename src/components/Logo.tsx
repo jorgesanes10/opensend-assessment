@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/redux/store';
 
-export const Logo = () => {
+export const Logo: FC = () => {
   const [fill, setFill] = useState('#1c1c1c');
   const theme = useSelector((state: RootState) => state.theme.theme);
 
