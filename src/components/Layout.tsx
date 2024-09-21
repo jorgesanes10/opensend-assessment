@@ -26,6 +26,7 @@ export const Layout: FC<LayoutProps> = ({ children }) => {
     <>
       <div className="w-full flex justify-end">
         <Button
+          className="hover:!border-[#288364] hover:!text-[#288364]"
           onClick={handleToggleTheme}
           shape="circle"
           icon={theme === 'light' ? <MoonOutlined /> : <SunOutlined />}

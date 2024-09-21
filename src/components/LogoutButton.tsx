@@ -9,7 +9,7 @@ export const LogoutButton = () => {
 
   return (
     <Button
-      className="mr-2 font-semibold"
+      className="mr-2 font-semibold hover:!border-[#288364] hover:!text-[#288364]"
       onClick={() => {
         dispatch(setIsAuthenticated(false));
         localStorage.removeItem('OpenSend_tokens');

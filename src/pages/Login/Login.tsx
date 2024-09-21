@@ -144,7 +144,7 @@ export const Login: FC = () => {
               <h1 className="font-semibold text-3xl mb-2 leading-normal">
                 Welcome back!
               </h1>
-              <p className="mb-6 tracking-wide font-sans text-sm">
+              <p className="mb-6  font-sans text-sm">
                 Log in to continue with Opensend
               </p>
               <Form form={form} name="login" onSubmitCapture={handleFormSubmit}>
@@ -197,7 +197,8 @@ export const Login: FC = () => {
                   loading={isLoading || isLoadingStoreInfo}
                   data-testid="login-btn"
                 >
-                  Log in
+                  {/* Change to Log in (the verb) */}
+                  Login
                 </Button>
               </Form>
               {/* If this takes you to another page, it must be an anchor, not a button */}
@@ -205,7 +206,7 @@ export const Login: FC = () => {
                 className="rounded font-bold mt-2 p-5 text-lg hover:!border-[#288364] hover:!text-[#288364]"
                 block
               >
-                Forgot your password?
+                Forgot Your Password?
               </Button>
             </Card>
           )}
