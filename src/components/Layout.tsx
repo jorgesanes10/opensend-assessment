@@ -30,6 +30,7 @@ export const Layout: FC<LayoutProps> = ({ children }) => {
           onClick={handleToggleTheme}
           shape="circle"
           icon={theme === 'light' ? <MoonOutlined /> : <SunOutlined />}
+          title={`Change to ${theme === 'light' ? 'dark' : 'light'} mode`}
           data-testid="theme-toggle-btn"
         />
       </div>
