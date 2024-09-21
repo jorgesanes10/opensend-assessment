@@ -54,7 +54,7 @@ export const Login: FC = () => {
 
   async function fetchUser() {
     try {
-      const userInfoResult = await fetchUserInfo();
+      const userInfoResult = await fetchUserInfo({});
 
       const userType = userInfoResult?.data?.view?.type;
       const storeId = userInfoResult?.data?.view?.accesses[0]?.store_id;
@@ -183,9 +183,11 @@ export const Login: FC = () => {
                     data-testid="login-error-message"
                   >
                     {
-                      (error as FetchBaseQueryError).data?.message.split(
-                        ':: ',
-                      )[1]
+                      (
+                        (error as FetchBaseQueryError).data as {
+                          message: string;
+                        }
+                      )?.message.split(':: ')[1]
                     }
                   </p>
                 )}
