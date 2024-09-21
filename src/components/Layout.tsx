@@ -15,6 +15,7 @@ export const Layout: FC<LayoutProps> = ({ children }) => {
 
   useEffect(() => {
     document.body.className = theme;
+    console.log('theme', theme);
   }, [theme]);
 
   const handleToggleTheme = () => {
@@ -28,6 +29,7 @@ export const Layout: FC<LayoutProps> = ({ children }) => {
           onClick={handleToggleTheme}
           shape="circle"
           icon={theme === 'light' ? <MoonOutlined /> : <SunOutlined />}
+          data-testid="theme-toggle-btn"
         />
       </div>
       {children}

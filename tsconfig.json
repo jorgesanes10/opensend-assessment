@@ -5,8 +5,9 @@
     { "path": "./tsconfig.node.json" }
   ],
   "compilerOptions": {
-    "composite": true,
     "baseUrl": ".",
+    "module": "ESNext",
+    "target": "ESNext",
     "paths": {
       "@/*": ["src/*"]
     }

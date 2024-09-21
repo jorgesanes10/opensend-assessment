@@ -15,6 +15,7 @@ export const LogoutButton = () => {
         localStorage.removeItem('OpenSend_tokens');
         navigate('/');
       }}
+      data-testid="logout-btn"
     >
       Log out
     </Button>

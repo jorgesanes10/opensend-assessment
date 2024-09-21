@@ -177,10 +177,13 @@ export const Login: FC = () => {
                   />
                 </Form.Item>
                 {isError && (
-                  <p className="text-red-500 mb-4">
+                  <p
+                    className="text-red-500 mb-4"
+                    data-testid="login-error-message"
+                  >
                     {
                       (error as FetchBaseQueryError).data?.message.split(
-                        '::',
+                        ':: ',
                       )[1]
                     }
                   </p>
@@ -192,6 +195,7 @@ export const Login: FC = () => {
                   block
                   disabled={!isFormValid}
                   loading={isLoading || isLoadingStoreInfo}
+                  data-testid="login-btn"
                 >
                   Log in
                 </Button>
