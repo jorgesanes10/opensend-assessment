@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { FetchBaseQueryError } from '@reduxjs/toolkit/query';
 import { Card, Row, Col, Form, Input, Button, Spin } from 'antd';
-import { LockTwoTone, MailTwoTone } from '@ant-design/icons';
 import {
   useLazyGetStoreInfoQuery,
   useLazyGetUserInfoQuery,
@@ -11,8 +10,11 @@ import {
 } from '@/redux/slices/apiSlice';
 import { setIsAuthenticated } from '@/redux/slices/userSlice';
 import { Logo } from '@/components/Logo';
+import emailIcon from '@/assets/email-icon.svg';
+import lockIcon from '@/assets/lock-icon.svg';
 
 import './Login.css';
+import { LockIcon } from '@/components/LockIcon';
 
 type FormData = {
   username: string;
@@ -125,55 +127,58 @@ export const Login: FC = () => {
   };
 
   return (
-    <main className="login flex flex-col justify-center items-center">
-      <div className="mb-6">
+    <main className="login flex flex-col justify-center items-center gap-6">
+      <div>
         <Logo />
       </div>
       <Row className="w-full flex justify-center">
-        <Col
-          xs={{ flex: '100%' }}
-          sm={{ flex: '80%' }}
-          md={{ flex: '50%' }}
-          lg={{ flex: '45%' }}
-          xl={{ flex: '40%' }}
-        >
+        <Col>
           {isLoadingUserInfo || (isLoadingStoreInfo && userInfoData) ? (
             <Spin />
           ) : (
-            <Card className="p-4">
-              <h1 className="font-semibold text-3xl mb-2 leading-normal">
-                Welcome back!
-              </h1>
-              <p className="mb-6  font-sans text-sm">
-                Log in to continue with Opensend
-              </p>
-              <Form form={form} name="login" onSubmitCapture={handleFormSubmit}>
+            <Card className="p-6">
+              <div className="flex flex-col items-center gap-4">
+                <h1 className="font-semibold text-[28px] leading-normal">
+                  Welcome back!
+                </h1>
+                <p className="font-sans text-sm leading-tight">
+                  Log in to continue with Opensend
+                </p>
+              </div>
+              <Form
+                className="mt-8 flex flex-col gap-4"
+                form={form}
+                name="login"
+                onSubmitCapture={handleFormSubmit}
+              >
                 <Form.Item
                   name="username"
                   rules={[
-                    { required: true, message: 'Please type your username' },
+                    { required: true, message: 'Please type your username.' },
                     {
                       pattern:
                         /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
-                      message: 'Please type a valid email address',
+                      message: 'Please type a valid email address.',
                     },
                   ]}
                 >
                   <Input
                     type="email"
-                    placeholder="Email"
-                    prefix={<MailTwoTone twoToneColor="#999" />}
+                    placeholder="Email address"
+                    className="my-[2px]"
+                    prefix={<img className="h-4 w-4" src={emailIcon} alt="" />}
                   />
                 </Form.Item>
                 <Form.Item
                   name="password"
                   rules={[
-                    { required: true, message: 'Please type your password' },
+                    { required: true, message: 'Please type your password.' },
                   ]}
                 >
                   <Input.Password
                     placeholder="Password"
-                    prefix={<LockTwoTone twoToneColor="#999" />}
+                    className="my-[2px]"
+                    prefix={<LockIcon />}
                   />
                 </Form.Item>
                 {/* I placed the error here to give a visual differentiation between errors caused by the user directly and errors that come from the backend */}
@@ -193,7 +198,7 @@ export const Login: FC = () => {
                 )}
                 <Button
                   htmlType="submit"
-                  className="rounded text-lg p-5 font-bold !shadow-none bg-[#288364] hover:!bg-[#206b53] disabled:opacity-60 disabled:bg-[#288364] disabled:text-[#fff]"
+                  className="rounded border-none leading-none text-lg px-6 pt-2.5 h-10 pb-3 font-semibold !shadow-none bg-[#298566] hover:!bg-[#025a3a] disabled:opacity-60 disabled:bg-[#288364] disabled:text-[#fff] transition-colors"
                   type="primary"
                   block
                   disabled={!isFormValid}
@@ -206,7 +211,7 @@ export const Login: FC = () => {
               </Form>
               {/* If this takes you to another page, it must be an anchor, not a button */}
               <Button
-                className="rounded font-bold mt-2 p-5 text-lg hover:!border-[#288364] hover:!text-[#288364]"
+                className="!shadow-none rounded leading-none font-semibold mt-2 px-6 pt-2.5 h-10 pb-3 text-lg text-[#1d1d1b] border-[#c9cac9] hover:!border-[#585a58] hover:!text-[#1d1d1b]"
                 block
               >
                 Forgot Your Password?

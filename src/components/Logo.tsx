@@ -12,8 +12,8 @@ export const Logo: FC = () => {
 
   return (
     <svg
-      width="207"
-      height="34"
+      width="195"
+      height="32"
       viewBox="0 0 207 34"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
