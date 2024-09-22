@@ -11,7 +11,6 @@ import {
 import { setIsAuthenticated } from '@/redux/slices/userSlice';
 import { Logo } from '@/components/Logo';
 import emailIcon from '@/assets/email-icon.svg';
-import lockIcon from '@/assets/lock-icon.svg';
 
 import './Login.css';
 import { LockIcon } from '@/components/LockIcon';
